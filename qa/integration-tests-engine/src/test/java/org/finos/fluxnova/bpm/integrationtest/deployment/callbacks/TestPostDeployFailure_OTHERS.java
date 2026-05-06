@@ -18,6 +18,7 @@ package org.finos.fluxnova.bpm.integrationtest.deployment.callbacks;
 
 import org.junit.Assert;
 
+import org.finos.fluxnova.bpm.integrationtest.deployment.callbacks.apps.PostDeployFailureApp;
 import org.finos.fluxnova.bpm.integrationtest.util.AbstractFoxPlatformIntegrationTest;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.OperateOnDeployment;
@@ -37,7 +38,8 @@ public class TestPostDeployFailure_OTHERS extends AbstractFoxPlatformIntegration
   
   @Deployment(name="fail")
   public static WebArchive createDeployment1() {    
-   return TestPostDeployFailure_JBOSS.createDeployment1();    
+    return initWebArchiveDeployment("fail.war")
+      .addClass(PostDeployFailureApp.class);
   }
   
   @Deployment(name="checker")

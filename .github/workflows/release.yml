@@ -111,7 +111,7 @@ jobs:
             -DreleaseVersion=${{ env.RELEASE_VERSION }} \
             -DdevelopmentVersion=${{ env.DEVELOPMENT_VERSION }} \
             -Dtag=${{ env.TAG }} \
-            -Psonatype-oss-release,distro,distro-ce,distro-wildfly \
+            -Psonatype-oss-release,distro,distro-ce \
             -DignoreSnapshots=true \
             -DinteractiveMode=false
 
@@ -121,7 +121,7 @@ jobs:
             -DinteractiveMode=false \
             -DreleaseProfiles=sonatype-oss-release \
             -Dgoals='deploy org.sonatype.plugins:nexus-staging-maven-plugin:1.6.13:close org.sonatype.plugins:nexus-staging-maven-plugin:1.6.13:release' \
-            -Darguments='-Psonatype-oss-release,distro,distro-ce,!distro-tomcat,!distro-wildfly,!distro-webjar,distro-run -DreleasePerform=true -DskipTests -DskipITs' \
+            -Darguments='-Psonatype-oss-release,distro,distro-ce,!distro-tomcat,!distro-webjar,distro-run -DreleasePerform=true -DskipTests -DskipITs' \
             release:perform
 
       - name: Print Release Version

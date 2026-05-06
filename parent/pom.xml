@@ -58,13 +58,6 @@
     <version.commonj>1.1.0</version.commonj>
     <version.bouncycastle>1.47</version.bouncycastle>
 
-    <!-- application servers -->
-    <version.wildfly>37.0.0.Final</version.wildfly>
-    <version.wildfly.core>29.0.0.Final</version.wildfly.core>
-
-    <version.wildfly26>26.0.1.Final</version.wildfly26>
-    <version.wildfly26.core>18.0.4.Final</version.wildfly26.core>
-
     <version.tomcat9>9.0.107</version.tomcat9>
     <version.tomcat>10.1.43</version.tomcat>
 
@@ -349,14 +342,6 @@
       </build>
     </profile>
   </profiles>
-
-  <repositories>
-    <repository>
-      <id>JBoss public</id>
-      <name>jboss</name>
-      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-    </repository>
-  </repositories>
 
   <licenses>
     <license>
