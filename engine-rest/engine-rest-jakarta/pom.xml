@@ -25,10 +25,6 @@
         <version>${version.jaxrs.api}</version>
       </dependency>
       <dependency>
-        <groupId>org.jboss.spec.javax.ws.rs</groupId>
-        <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
-      </dependency>
-      <dependency>
         <groupId>jakarta.platform</groupId>
         <artifactId>jakarta.jakartaee-bom</artifactId>
         <version>${version.jakarta-ee-spec}</version>
