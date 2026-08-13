@@ -8,12 +8,10 @@
   <parent>
     <groupId>org.finos.fluxnova.bpm.qa</groupId>
     <artifactId>fluxnova-qa</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>3.1.0-SNAPSHOT</version>
   </parent>
 
   <properties>
-    <version.spring.framework>${version.spring.framework6}</version.spring.framework>
-
     <version.arquillian>1.7.0.Final</version.arquillian>
 
     <redirect.test.output>true</redirect.test.output>
@@ -58,7 +56,7 @@
       </dependency>
 
       <dependency>
-        <groupId>com.fasterxml.jackson</groupId>
+        <groupId>tools.jackson</groupId>
         <artifactId>jackson-bom</artifactId>
         <version>${version.jackson}</version>
         <scope>import</scope>
@@ -85,19 +83,13 @@
     </dependency>
 
     <dependency>
-      <groupId>org.jboss.arquillian.junit</groupId>
-      <artifactId>arquillian-junit-container</artifactId>
+      <groupId>org.jboss.arquillian.junit5</groupId>
+      <artifactId>arquillian-junit5-container</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.arquillian.protocol</groupId>
       <artifactId>arquillian-protocol-servlet-jakarta</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
 
@@ -147,13 +139,13 @@
 
     <dependency>
       <groupId>org.finos.fluxnova.bpm.javaee</groupId>
-      <artifactId>fluxnova-ejb-client-jakarta</artifactId>
+      <artifactId>fluxnova-ejb-client</artifactId>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.finos.fluxnova.bpm</groupId>
-      <artifactId>fluxnova-engine-cdi-jakarta</artifactId>
+      <artifactId>fluxnova-engine-cdi</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -198,7 +190,7 @@
 
     <dependency>
       <groupId>org.finos.fluxnova.bpm</groupId>
-      <artifactId>fluxnova-engine-spring-6</artifactId>
+      <artifactId>fluxnova-engine-spring</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
       <exclusions>
@@ -220,7 +212,7 @@
     </dependency>
 
     <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <groupId>tools.jackson.datatype</groupId>
       <artifactId>jackson-datatype-joda</artifactId>
     </dependency>
 
@@ -278,7 +270,16 @@
       <artifactId>groovy-jsr223</artifactId>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+        <groupId>org.jboss.arquillian.junit5</groupId>
+        <artifactId>arquillian-junit5-core</artifactId>
+        <scope>test</scope>
+    </dependency>
+      <dependency>
+          <groupId>org.jboss.arquillian.protocol</groupId>
+          <artifactId>arquillian-protocol-servlet</artifactId>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 
   <build>
@@ -376,13 +377,13 @@
                 <resource>
                   <directory>${basedir}/../integration-tests-engine/src/test/resources-tomcat</directory>
                   <filtering>false</filtering>
-                  <!-- Do not copy the tomcat 9 arquillian xml -->
+                  <!-- Do not copy the legacy tomcat arquillian xml -->
                   <excludes>
                     <exclude>**/arquillian.xml</exclude>
                   </excludes>
                 </resource>
 
-                <!-- Use the tomcat 10 arquillian.xml instead -->
+                <!-- Use the tomcat 11 arquillian.xml instead -->
                 <resource>
                   <directory>${basedir}/src/test/resources-tomcat</directory>
                   <filtering>false</filtering>
@@ -402,54 +403,6 @@
             <goals>
               <goal>properties</goal>
             </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.transformer</groupId>
-        <artifactId>transformer-maven-plugin</artifactId>
-        <executions>
-          <!-- transform sources -->
-          <execution>
-            <id>transform-jakarta-test-sources</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>transform</goal>
-            </goals>
-            <configuration>
-              <transformDirectory>${project.build.directory}/generated-test-sources/jakarta</transformDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>transform-jakarta-test-sources-tomcat</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>transform</goal>
-            </goals>
-            <configuration>
-              <transformDirectory>${project.build.directory}/generated-test-sources/java-tomcat</transformDirectory>
-            </configuration>
-          </execution>
-         <!-- transform resources -->
-          <execution>
-            <id>transform-jakarta-test-resources</id>
-            <phase>generate-test-resources</phase>
-            <goals>
-              <goal>transform</goal>
-            </goals>
-            <configuration>
-              <transformDirectory>${project.build.directory}/generated-test-resources/jakarta</transformDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>transform-jakarta-test-resources-tomcat</id>
-            <phase>generate-test-resources</phase>
-            <goals>
-              <goal>transform</goal>
-            </goals>
-            <configuration>
-              <transformDirectory>${project.build.directory}/generated-test-resources/resources-tomcat</transformDirectory>
-            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -523,20 +476,20 @@
         <!-- This dependency can be updated when arquillian releases the managed tomcat 10 artifact -->
         <dependency>
           <groupId>org.jboss.arquillian.container</groupId>
-          <artifactId>arquillian-tomcat-managed-8</artifactId>
-          <version>1.1.0.Final</version>
+          <artifactId>arquillian-tomcat-managed-10</artifactId>
+          <version>1.2.4.Final</version>
           <scope>test</scope>
         </dependency>
 
-        <!-- switch to use Jakarta Servlet 5.0 protocol -->
+        <!-- switch to use Jakarta Servlet 6.0 protocol -->
         <dependency>
           <groupId>org.jboss.arquillian.protocol</groupId>
           <artifactId>arquillian-protocol-servlet-jakarta</artifactId>
         </dependency>
 
-        <dependency>
-          <groupId>org.jboss.arquillian.junit</groupId>
-          <artifactId>arquillian-junit-container</artifactId>
+          <dependency>
+          <groupId>org.jboss.arquillian.junit5</groupId>
+          <artifactId>arquillian-junit5-container</artifactId>
           <scope>test</scope>
         </dependency>
 

@@ -16,30 +16,27 @@
  */
 package org.finos.fluxnova.bpm.integrationtest.deployment.callbacks;
 
-import org.junit.Assert;
-
-import org.finos.fluxnova.bpm.integrationtest.deployment.callbacks.apps.PostDeployFailureApp;
 import org.finos.fluxnova.bpm.integrationtest.util.AbstractFoxPlatformIntegrationTest;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.OperateOnDeployment;
-import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * @author Daniel Meyer
  *
  */
-@RunWith(Arquillian.class)
-@Ignore
+@ExtendWith(ArquillianExtension.class)
+@Disabled
 public class TestPostDeployFailure_OTHERS extends AbstractFoxPlatformIntegrationTest {
   
   @Deployment(name="fail")
   public static WebArchive createDeployment1() {    
-    return initWebArchiveDeployment("fail.war")
-      .addClass(PostDeployFailureApp.class);
+   return TestPostDeployFailure_JBOSS.createDeployment1();    
   }
   
   @Deployment(name="checker")
@@ -57,7 +54,7 @@ public class TestPostDeployFailure_OTHERS extends AbstractFoxPlatformIntegration
       .createDeploymentQuery()
       .count();
     
-    Assert.assertEquals(1, count);
+    Assertions.assertEquals(1, count);
        
   }
   
