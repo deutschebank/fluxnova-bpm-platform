@@ -1006,8 +1006,8 @@ public abstract class MockProvider {
   public static final String EXAMPLE_TELEMETRY_PRODUCT_EDITION = "enterprise";
   public static final String EXAMPLE_TELEMETRY_DB_VENDOR = "h2";
   public static final String EXAMPLE_TELEMETRY_DB_VERSION = "1.4.190 (2015-10-11)";
-  public static final String EXAMPLE_TELEMETRY_APP_SERVER_VENDOR = "Wildfly";
-  public static final String EXAMPLE_TELEMETRY_APP_SERVER_VERSION = "WildFly Full 19.0.0.Final (WildFly Core 11.0.0.Final) - 2.0.30.Final";
+  public static final String EXAMPLE_TELEMETRY_APP_SERVER_VENDOR = "Apache Tomcat";
+  public static final String EXAMPLE_TELEMETRY_APP_SERVER_VERSION = "Apache Tomcat/11.0.22";
   public static final String EXAMPLE_TELEMETRY_TELEMETRY_CONFIGURE_CMD = "TelemetryConfigureCmd";
   public static final String EXAMPLE_TELEMETRY_IS_TELEMETRY_ENABLED_CMD = "IsTelemetryEnabledCmd";
   public static final String EXAMPLE_TELEMETRY_GET_TELEMETRY_DATA_CMD = "GetTelemetryDataCmd";

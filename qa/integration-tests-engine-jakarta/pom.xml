@@ -423,8 +423,8 @@
               </sources>
             </configuration>
           </execution>
-          <!-- Tomcat is the only supported container now that WildFly/JBoss support has
-            been removed, so its sources are always compiled as part of the test sources. -->
+          <!-- Tomcat is the only supported container now that support for other
+            application servers has been removed, so its sources are always compiled as part of the test sources. -->
           <execution>
             <id>add-tomcat-test-source</id>
             <phase>generate-test-sources</phase>
