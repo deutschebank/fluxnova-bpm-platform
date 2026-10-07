@@ -6,17 +6,15 @@ This file lists the maintainers of this repository.
 
 | GitHub Username | Name | Organization | Email (optional) |
 |----------------|------|--------------|------------------|
-| @HarishMalavade | *please add name* | Fidelity Investment |  |
-| @SureshMuthukaruppasamy | *please add name* | *please add organization* |  |
-| @andy9876 | *please add name* | *please add organization* | andrew.bonham@verizon.net |
-| @aurelian-valeriu-apostol-db | *please add name* | *please add organization* |  |
-| @aurelianapostol | Aurelian | *please add organization* |  |
-| @eljaime | Jaime Mantilla | *please add organization* |  |
-| @gaborherr-db | *please add name* | *please add organization* |  |
-| @gliptak | Gábor Lipták | *please add organization* |  |
-| @kriswest | Kris West | NatWest Group |  |
-| @pieter-schutte | *please add name* | *please add organization* |  |
-| @prajwolbhandari1 | prajwol bhandari | *please add organization* |  |
+| @HarishMalavade | Harish Malavade | Fidelity Investments | |
+| @prajwolbhandari1 | Prajwol Bhandari | Fidelity Investments | |
+| @pieter-schutte | Pieter Schutte | NatWest | |
+| @SureshMuthukaruppasamy | Suresh Muthukaruppasamy | NatWest | |
+| @kriswest | Kris West | NatWest | |
+| @aurelian-valeriu-apostol-db | Aurelian Apostol | Deutsche Bank AG | |
+| @gaborherr-db | Gabor Herr | Deutsche Bank AG | |
+| @andy9876 | Andrew Bonham | Capital One | |
+| @eljaime | Jaime Mantilla | Capital One | |
 
 For information about maintainer responsibilities and resources, see the [FINOS Maintainers Cheatsheet](https://community.finos.org/docs/finos-maintainers-cheatsheet).
 
