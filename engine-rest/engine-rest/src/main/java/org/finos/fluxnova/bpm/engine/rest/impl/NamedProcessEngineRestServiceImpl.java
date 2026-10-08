@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.UriBuilder;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.UriBuilder;
 
 import org.finos.fluxnova.bpm.engine.ProcessEngine;
 import org.finos.fluxnova.bpm.engine.rest.AuthorizationRestService;
@@ -60,6 +60,7 @@ import org.finos.fluxnova.bpm.engine.rest.SchemaLogRestService;
 import org.finos.fluxnova.bpm.engine.rest.SignalRestService;
 import org.finos.fluxnova.bpm.engine.rest.TaskRestService;
 import org.finos.fluxnova.bpm.engine.rest.TelemetryRestService;
+import org.finos.fluxnova.bpm.engine.rest.ConfigurationRestService;
 import org.finos.fluxnova.bpm.engine.rest.TenantRestService;
 import org.finos.fluxnova.bpm.engine.rest.UserRestService;
 import org.finos.fluxnova.bpm.engine.rest.VariableInstanceRestService;
@@ -235,6 +236,12 @@ public class NamedProcessEngineRestServiceImpl extends AbstractProcessEngineRest
   @Path("/{name}" + BatchRestService.PATH)
   public BatchRestService getBatchRestService(@PathParam("name") String engineName) {
     return super.getBatchRestService(engineName);
+  }
+
+  @Override
+  @Path("/{name}" + ConfigurationRestService.PATH)
+  public ConfigurationRestService getConfigurationRestService(@PathParam("name") String engineName) {
+    return super.getConfigurationRestService(engineName);
   }
 
   @Override

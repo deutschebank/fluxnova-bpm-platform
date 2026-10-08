@@ -21,7 +21,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
-import javax.activation.MimetypesFileTypeMap;
+import jakarta.activation.MimetypesFileTypeMap;
 
 import org.finos.fluxnova.bpm.engine.variable.context.VariableContext;
 import org.finos.fluxnova.bpm.engine.variable.impl.VariableMapImpl;
@@ -66,7 +66,7 @@ import org.finos.fluxnova.bpm.engine.variable.value.builder.TypedValueBuilder;
  * Users can import the methods provided by this class using a static import:</p>
  *
  * <code>
- * import static org.camunda.bpm.engine.variable.Variables.*;
+ * import static org.finos.fluxnova.bpm.engine.variable.Variables.*;
  * </code>
  *
  * @author Daniel Meyer

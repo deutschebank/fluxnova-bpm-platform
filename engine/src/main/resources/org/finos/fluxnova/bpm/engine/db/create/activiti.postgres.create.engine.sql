@@ -66,7 +66,7 @@ create table ACT_GE_SCHEMA_LOG (
 );
 
 insert into ACT_GE_SCHEMA_LOG
-values ('0', CURRENT_TIMESTAMP, '2.0.0');
+values ('0', CURRENT_TIMESTAMP, '3.0.0');
 
 create table ACT_RE_DEPLOYMENT (
     ID_ varchar(64),
@@ -605,3 +605,30 @@ create index ACT_IDX_PROCDEF_VER_TAG ON ACT_RE_PROCDEF(VERSION_TAG_);
 -- indices for history cleanup
 create index ACT_IDX_AUTH_ROOT_PI on ACT_RU_AUTHORIZATION(ROOT_PROC_INST_ID_);
 create index ACT_IDX_AUTH_RM_TIME on ACT_RU_AUTHORIZATION(REMOVAL_TIME_);
+
+-- Fluxnova BPM Platform: Process Configuration table (PostgreSQL)
+create table ACT_GE_CONFIGURATION (
+    ID_          varchar(64)   not null,
+    CONFIG_KEY_  varchar(255)  not null,
+    TENANT_ID_   varchar(255),
+    CONFIG_VALUE_ text         not null,
+    VERSION_     integer       not null default 1,
+    STATUS_      varchar(20)   not null default 'ACTIVE',
+    CREATED_BY_  varchar(255),
+    CREATED_AT_  timestamp,
+    UPDATED_BY_  varchar(255),
+    UPDATED_AT_  timestamp,
+    primary key (ID_)
+);
+
+-- NULL-safe unique constraint: two NULLs are treated as distinct by most DBs,
+-- but the application enforces uniqueness at the service layer for (key, NULL tenant).
+create unique index ACT_UNIQ_GE_CONFIG_TENANT
+    on ACT_GE_CONFIGURATION (CONFIG_KEY_, TENANT_ID_)
+    where TENANT_ID_ is not null
+      and STATUS_ = 'ACTIVE';
+
+create unique index ACT_UNIQ_GE_CONFIG_GLOBAL
+    on ACT_GE_CONFIGURATION (CONFIG_KEY_)
+    where TENANT_ID_ is null
+      and STATUS_ = 'ACTIVE';
